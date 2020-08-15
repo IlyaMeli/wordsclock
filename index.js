@@ -26,7 +26,12 @@ function getCurrentTime() {
       $(".ten").style.cssText = shine;
     }
 
-    if (minutes >= 5 && minutes !== 15 && minutes < 20  && minutes !== 45) {
+    if (
+      (minutes >= 5 && minutes <= 15) ||
+      (minutes >= 20 && minutes < 30) ||
+      (minutes >= 40 && minutes < 45) ||
+      (minutes >= 50)
+    ) {
       $(".minutes").style.cssText = shine;
     }
     if (
@@ -36,7 +41,7 @@ function getCurrentTime() {
     ) {
       $(".five").style.cssText = shine;
     }
-    if ((minutes >= 15 && minutes < 20) || (minutes >= 45 && minutes < 50)) {
+    if ((minutes >= 15 && minutes < 20) || (minutes >= 45 && minutes < 50) ) {
       $(".quarter").style.cssText = shine;
     }
     if (minutes >= 40) {
