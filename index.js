@@ -2,14 +2,14 @@ let $ = (selector) => document.querySelector(selector);
 let $$ = (selector) => document.querySelectorAll(selector);
 let GEID = (selector) => document.getElementById(selector);
 let shine = "text-shadow: 0px 0px 6px #FFFFFF; color: white";
-let rShine = "text-shadow: 0px 0px 0px #000000; color: rgb(61, 61, 61);";
+let rShine = "text-shadow: 0px 0px 0px #000000; color: rgb(30, 30, 30);";
 
 function getCurrentTime() {
   let date = new Date();
   let hour = date.getHours() % 12 || 12;
   let minutes = date.getMinutes();
   hour === 12 ? (nextHour = 1) : (nextHour = hour + 1);
-  console.log(`Current time is ${hour}:${minutes}`);
+  // console.log(`Current time is ${hour}:${minutes}`);
   for (let i = 1; i < 13; i++) {
     $(".it-is").style.cssText = shine;
     $(".oclock").style.cssText = shine;
@@ -22,12 +22,12 @@ function getCurrentTime() {
     if (minutes >= 30 && minutes < 40) {
       $(".half").style.cssText = shine;
     }
-    if ((minutes >= 10 && minutes < 20) || (minutes >= 50 && minutes < 55)) {
+    if ((minutes >= 10 && minutes < 15) || (minutes >= 50 && minutes < 55)) {
       $(".ten").style.cssText = shine;
     }
 
     if (
-      (minutes >= 5 && minutes <= 15) ||
+      (minutes >= 5 && minutes < 15) ||
       (minutes >= 20 && minutes < 30) ||
       (minutes >= 40 && minutes < 45) ||
       (minutes >= 50)
