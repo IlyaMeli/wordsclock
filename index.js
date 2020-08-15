@@ -3,7 +3,6 @@ let $$ = (selector) => document.querySelectorAll(selector);
 let GEID = (selector) => document.getElementById(selector);
 let shine = "text-shadow: 0px 0px 6px #FFFFFF; color: white";
 let rShine = "text-shadow: 0px 0px 0px #000000; color: rgb(30, 30, 30);";
-
 function getCurrentTime() {
   let date = new Date();
   let hour = date.getHours() % 12 || 12;
@@ -30,7 +29,7 @@ function getCurrentTime() {
       (minutes >= 5 && minutes < 15) ||
       (minutes >= 20 && minutes < 30) ||
       (minutes >= 40 && minutes < 45) ||
-      (minutes >= 50)
+      minutes >= 50
     ) {
       $(".minutes").style.cssText = shine;
     }
@@ -41,7 +40,7 @@ function getCurrentTime() {
     ) {
       $(".five").style.cssText = shine;
     }
-    if ((minutes >= 15 && minutes < 20) || (minutes >= 45 && minutes < 50) ) {
+    if ((minutes >= 15 && minutes < 20) || (minutes >= 45 && minutes < 50)) {
       $(".quarter").style.cssText = shine;
     }
     if (minutes >= 40) {
