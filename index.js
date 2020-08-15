@@ -1,75 +1,62 @@
 let $ = (selector) => document.querySelector(selector);
-let ts = "0px 0px 6px #FFFFFF";
-let w = "white";
+let $$ = (selector) => document.querySelectorAll(selector);
+let GEID = (selector) => document.getElementById(selector);
+let shine = "text-shadow: 0px 0px 6px #FFFFFF; color: white";
+let rShine = "text-shadow: 0px 0px 0px #000000; color: rgb(61, 61, 61);";
 
 function getCurrentTime() {
   let date = new Date();
-
-  let currentHour = date.getHours() % 12 || 12;
-  let currentMin = date.getMinutes();
-  let nextHour;
-  currentHour === 12 ? (nextHour = 1) : (nextHour = currentHour + 1);
-
-  console.log(`Current time is ${currentHour}:${currentMin}`);
+  let hour = date.getHours() % 12 || 12;
+  let minutes = date.getMinutes();
+  hour === 12 ? (nextHour = 1) : (nextHour = hour + 1);
+  console.log(`Current time is ${hour}:${minutes}`);
   for (let i = 1; i < 13; i++) {
-    $(".it-is").style.color = w;
-    $(".it-is").style.textShadow = ts;
-    $(".oclock").style.color = w;
-    $(".oclock").style.textShadow = ts;
-
-    if (currentHour === i && currentMin < 40) {
-      document.getElementById(`${i}`).style.color = w;
-      document.getElementById(`${i}`).style.textShadow = ts;
+    $(".it-is").style.cssText = shine;
+    $(".oclock").style.cssText = shine;
+    if (hour === i && minutes < 40) {
+      GEID(`${i}`).style.cssText = shine;
+    }
+    if (minutes >= 5 && minutes < 40) {
+      $(".past").style.cssText = shine;
+    }
+    if (minutes >= 30 && minutes < 40) {
+      $(".half").style.cssText = shine;
+    }
+    if ((minutes >= 10 && minutes < 20) || (minutes >= 50 && minutes < 55)) {
+      $(".ten").style.cssText = shine;
     }
 
-    if (currentMin >= 30 && currentMin < 40) {
-      $(".half").style.color = w;
-      $(".half").style.textShadow = ts;
-      $(".past").style.color = w;
-      $(".past").style.textShadow = ts;
+    if (minutes >= 5 && minutes !== 15 && minutes < 20  && minutes !== 45) {
+      $(".minutes").style.cssText = shine;
     }
-    if (currentMin >= 10 && currentMin < 30) {
-      $(".ten").style.color = w;
-      $(".ten").style.textShadow = ts;
-      $(".minutes").style.color = w;
-      $(".minutes").style.textShadow = ts;
-      $(".past").style.color = w;
-      $(".past").style.textShadow = ts;
+    if (
+      (minutes >= 5 && minutes < 10) ||
+      minutes >= 55 ||
+      (minutes >= 25 && minutes < 30)
+    ) {
+      $(".five").style.cssText = shine;
     }
-    if (currentMin >= 5 && currentMin < 10) {
-      $(".five").style.color = w;
-      $(".five").style.textShadow = ts;
-      $(".minutes").style.color = w;
-      $(".minutes").style.textShadow = ts;
-      $(".past").style.color = w;
-      $(".past").style.textShadow = ts;
+    if ((minutes >= 15 && minutes < 20) || (minutes >= 45 && minutes < 50)) {
+      $(".quarter").style.cssText = shine;
     }
-    if (currentMin >= 15 && currentMin < 20) {
-      $(".quarter").style.color = w;
-      $(".quarter").style.textShadow = ts;
-      $(".past").style.color = w;
-      $(".past").style.textShadow = ts;
+    if (minutes >= 40) {
+      $(".to").style.cssText = shine;
     }
-    if (currentMin >= 40 && currentMin < 45) {
-      $(".twenty").style.color = w;
-      $(".twenty").style.textShadow = ts;
-      $(".to").style.color = w;
-      $(".to").style.textShadow = ts;
-      document.getElementById(`${nextHour}`).style.color = w;
-      document.getElementById(`${nextHour}`).style.textShadow = ts;
+    if ((minutes >= 40 && minutes < 45) || (minutes >= 20 && minutes < 30)) {
+      $(".twenty").style.cssText = shine;
     }
-
-    if (currentMin >= 45) {
-      $(".quarter").style.color = w;
-      $(".quarter").style.textShadow = ts;
-      $(".to").style.color = w;
-      $(".to").style.textShadow = ts;
-      document.getElementById(`${nextHour}`).style.color = w;
-      document.getElementById(`${nextHour}`).style.textShadow = ts;
+    if (minutes >= 40) {
+      GEID(`${nextHour}`).style.cssText = shine;
     }
   }
 }
 
+function removeStyle(className) {
+  $$(className).forEach((el) => (el.style.cssText = rShine));
+}
+
 setInterval(function () {
+  removeStyle(".number");
+  removeStyle(".words");
   getCurrentTime();
 }, 1000);
