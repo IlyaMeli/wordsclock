@@ -52,12 +52,12 @@ body {
 
 @media only screen and (max-width: 600px) {
   .number {
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 5px;
   }
 
   .words-box {
-    font-size: 2rem;
+    font-size: 1.8rem;
 
   }
   .container{
