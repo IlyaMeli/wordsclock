@@ -48,3 +48,27 @@ body {
   /* width: 50%; */
   flex-grow: 1;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .number {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+
+  .words-box {
+    font-size: 1.5rem;
+
+  }
+  .container{
+    height: 60vh;
+    border: none;
+  }
+
+  body{
+
+  background-color: rgb(20, 20, 20);
+
+  }
+
+}
