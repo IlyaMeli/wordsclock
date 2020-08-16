@@ -63,6 +63,8 @@ body {
   .container{
     height: 60vh;
     border: none;
+  margin-top: 50px;
+
   }
 
   body{
